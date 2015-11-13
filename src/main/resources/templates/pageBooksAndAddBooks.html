@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello</title>
+    <style>
+        span {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<h1>分页</h1>
+<form action="/findbooksByName" method="get">
+<label>bookName</label><input name="name" type="text" required="required"/>
+    <label>price 2位整数</label><input name="price" type="text" required="required"  pattern="[0-9]{2}"/>
+    <label>页数</label><input name="page" type="text" th:value="${page!=null?page:'0'}"/>
+    <label>每页条数</label><input name="size" type="text" required="required" pattern="[0-9]{1}"/>
+<!--<input name="page" type="text" th:value="${page!=null?page:'0'"}"/>-->
+<!--<input name="size" type="text" th:value="${books!=null?books.size:'10'}"/>-->
+
+<input type="submit" value="提交"/>
+    <div th:if="${books!=null}"><span>结果</span>
+        <span th:each="item:${books}" th:text="${item.author}"></span>
+    </div>
+</form>
+<h1>新增</h1>
+<div>
+    <form action="/addBooks" method="post">
+        <div th:object="${books}" th:remove="tag">
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+            </ul>
+        </div>
+        <label>booksName</label><input name="name" type="text" required="required"/>
+        <label>price</label><input name="price" type="text" th:fields="*{price}" required="required" pattern="[0-9]"/>
+        <label>author</label><input name="author" th:fields="*{author}" type="text"/>
+        <input type="submit" value="提交"/>
+    </form>
+</div>
+</body>
+</html>

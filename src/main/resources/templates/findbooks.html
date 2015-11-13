@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello</title>
+    <style>
+        span {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div>
+<h1 th:text="${item.author}"></h1>
+    <a href="/findbooksByName">新增和分页</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello</title>
+    <style>
+        span {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<label>booksName</label><input type="text" name="name" id="name" value=""/>
+<a href="javascript:void(0)" onclick="findbooks()">根据名字查找book</a>
+<script type="application/javascript">
+    function findbooks(){
+        window.location.href="/findbooks/"+document.getElementById("name").value;
+    }
+</script>
+</body>
+</html>
